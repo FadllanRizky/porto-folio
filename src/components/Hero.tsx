@@ -5,44 +5,47 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-700 via-violet-700 to-purple-800 relative overflow-hidden"
+      className="min-h-screen flex items-center bg-canvas pt-16"
     >
-      <div className="absolute inset-0 bg-black/20" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16 py-20">
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[88px] font-normal leading-none tracking-[-1.92px] text-ink mb-5">
+              Padellan Riski
+            </h1>
+            <p className="text-lg sm:text-xl text-body-muted font-normal mb-2">
+              Full Stack Developer
+            </p>
+            <p className="text-base sm:text-lg text-muted max-w-md mb-10 md:mb-12 mx-auto md:mx-0">
+              Turning ideas into functional and elegant digital solutions.
+            </p>
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-on-primary text-sm font-medium rounded-pill hover:opacity-90 transition-opacity"
+              >
+                <Mail size={18} />
+                Contact Me
+              </a>
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-1 py-2 text-sm font-medium text-ink border-b border-ink/30 hover:border-ink transition-colors"
+              >
+                View Projects
+                <ArrowDown size={16} />
+              </a>
+            </div>
+          </div>
 
-      <div className="relative z-10 text-center px-4 py-20 max-w-3xl mx-auto">
-        <img
-          src={fotoProfil}
-          alt="Padellan Riski"
-          className="w-28 h-28 mx-auto mb-8 rounded-full object-cover border-4 border-white/30 shadow-xl shadow-indigo-900/50"
-        />
-
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
-          Padellan Riski
-        </h1>
-
-        <p className="text-xl sm:text-2xl text-white/90 font-medium mb-3">
-          Full Stack Developer
-        </p>
-
-        <p className="text-white/60 max-w-lg mx-auto mb-10">
-          Mengubah ide menjadi solusi digital yang fungsional dan elegan.
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-4">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-indigo-700 font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-          >
-            <Mail size={18} />
-            Hubungi Saya
-          </a>
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 hover:-translate-y-0.5 transition-all"
-          >
-            Lihat Proyek
-            <ArrowDown size={18} />
-          </a>
+          <div className="flex-shrink-0">
+            <div className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-lg overflow-hidden border border-hairline bg-soft-stone">
+              <img
+                src={fotoProfil}
+                alt="Padellan Riski"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
