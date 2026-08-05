@@ -1,45 +1,191 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Arial', 'Helvetica', system-ui, sans-serif;
+  --font-display: 'Arial Black', 'Archivo Black', system-ui, sans-serif;
+  --font-pixel: 'Press Start 2P', monospace;
 
-  --color-canvas: #ffffff;
-  --color-ink: #212121;
-  --color-soft-stone: #eeece7;
-  --color-hairline: #d9d9dd;
-  --color-border-light: #e5e7eb;
-  --color-card-border: #f2f2f2;
-  --color-muted: #93939f;
-  --color-slate: #75758a;
-  --color-body-muted: #616161;
-  --color-cohere-black: #000000;
-  --color-deep-green: #003c33;
-  --color-dark-navy: #071829;
-  --color-coral: #ff7759;
-  --color-coral-soft: #ffad9b;
-  --color-action-blue: #1863dc;
-  --color-focus-blue: #4c6ee6;
-  --color-pale-green: #edfce9;
-  --color-pale-blue: #f1f5ff;
-  --color-error: #b30000;
-  --color-primary: #17171c;
+  /* Nintendo 2001 Colors */
+  --color-nintendo-red: #e60012;
+  --color-signal-orange: #f68d1f;
+  --color-amber: #ecab37;
+  --color-nav-gold: #e48600;
+
+  /* Surface Colors */
+  --color-canvas: #7a8aba;
+  --color-canvas-soft: #9fbee7;
+  --color-periwinkle: #8ba1d4;
+  --color-lavender: #acace7;
+  --color-ice: #c0d5e6;
+  --color-platinum: #dedede;
+  --color-surface: #ffffff;
+
+  /* Chrome Colors */
+  --color-chrome-indigo: #3d4f97;
+  --color-muted-indigo: #60619c;
+  --color-carbon: #21242e;
+  --color-carbon-light: #2a2f3d;
+
+  /* Text Colors */
+  --color-ink: #21242e;
+  --color-ink-soft: #3d4f97;
   --color-on-primary: #ffffff;
 
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 22px;
-  --radius-xl: 30px;
-  --radius-pill: 32px;
+  /* Semantic */
+  --color-error: #e60012;
+
+  /* Legacy aliases */
+  --color-primary: #e60012;
+  --color-coral: #f68d1f;
+  --color-muted: #60619c;
+  --color-body-muted: #3d4f97;
+  --color-hairline: #5a5f8c;
+  --color-soft-stone: #8ba1d4;
+
+  /* Radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 9999px;
 }
 
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #7a8aba;
+}
+
+/* Halftone texture overlay */
+.halftone-bg {
+  background-image: radial-gradient(circle, #3d4f97 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* Bevel plate effect */
+.bevel-plate {
+  background-color: #7a8aba;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+    0 2px 0 #3d4f97;
+  border: 1px solid #3d4f97;
+}
+
+.bevel-inset {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid #3d4f97;
+}
+
+/* Carbon slab */
+.carbon-slab {
+  background-color: #21242e;
+  background-image: radial-gradient(circle, #3d4f97 0.5px, transparent 0.5px);
+  background-size: 4px 4px;
+}
+
+/* Section label bar */
+.section-label {
+  background-color: #7a8aba;
+  border-bottom: 2px solid #3d4f97;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Nintendo button styles */
+.btn-nintendo {
+  background-color: #ecab37;
+  color: #21242e;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 2px 0 #3d4f97;
+  transition: all 0.1s ease;
+}
+
+.btn-nintendo:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.btn-signal {
+  background-color: #f68d1f;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 11px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 0 #3d4f97;
+  transition: all 0.1s ease;
+}
+
+.btn-signal:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Display text with outline */
+.display-text {
+  font-family: 'Arial Black', 'Archivo Black', system-ui, sans-serif;
+  color: #ffffff;
+  text-shadow:
+    -2px -2px 0 #3d4f97,
+    2px -2px 0 #3d4f97,
+    -2px 2px 0 #3d4f97,
+    2px 2px 0 #3d4f97,
+    0 4px 0 #3d4f97;
+  letter-spacing: -1px;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Scroll reveal classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile responsive utilities */
+@media (max-width: 768px) {
+  .display-text {
+    text-shadow:
+      -1px -1px 0 #3d4f97,
+      1px -1px 0 #3d4f97,
+      -1px 1px 0 #3d4f97,
+      1px 1px 0 #3d4f97,
+      0 2px 0 #3d4f97;
+  }
 }

@@ -1,4 +1,5 @@
-import { Terminal, Globe, Component, Layout, ShoppingCart, Coffee, CheckCircle, Clock } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import { Coffee, ChevronRight, Terminal, Globe, Component, Layout, ShoppingCart, CheckCircle, Clock } from 'lucide-react'
 import flashscoreImg from '../assets/flashScore_Clone.png'
 import movieImg from '../assets/movieProject.png'
 import ecommerceImg from '../assets/ecommercer.png'
@@ -12,8 +13,8 @@ const projects = [
     icon: Terminal,
     image: projectCImg,
     status: 'Selesai',
-    statusColor: 'bg-coral/10 text-coral border-coral/30',
     statusIcon: CheckCircle,
+    statusColor: 'bg-nintendo-red',
   },
   {
     title: 'Flashscore Clone',
@@ -21,8 +22,8 @@ const projects = [
     icon: Globe,
     image: flashscoreImg,
     status: 'Selesai',
-    statusColor: 'bg-coral/10 text-coral border-coral/30',
     statusIcon: CheckCircle,
+    statusColor: 'bg-nintendo-red',
   },
   {
     title: 'Movie App',
@@ -30,8 +31,8 @@ const projects = [
     icon: Component,
     image: movieImg,
     status: 'Selesai',
-    statusColor: 'bg-coral/10 text-coral border-coral/30',
     statusIcon: CheckCircle,
+    statusColor: 'bg-nintendo-red',
   },
   {
     title: 'Web Profile',
@@ -39,8 +40,8 @@ const projects = [
     icon: Layout,
     image: webprofileImg,
     status: 'Selesai',
-    statusColor: 'bg-coral/10 text-coral border-coral/30',
     statusIcon: CheckCircle,
+    statusColor: 'bg-nintendo-red',
   },
   {
     title: 'E-Commerce & Peminjaman',
@@ -48,70 +49,113 @@ const projects = [
     icon: ShoppingCart,
     image: ecommerceImg,
     status: 'Selesai',
-    statusColor: 'bg-coral/10 text-coral border-coral/30',
     statusIcon: CheckCircle,
+    statusColor: 'bg-nintendo-red',
   },
   {
     title: 'Java API',
     tech: 'Java, SpringBoot',
     icon: Coffee,
-    thumbGradient: 'from-hairline to-soft-stone',
+    image: null,
     status: 'In Progress',
-    statusColor: 'bg-muted/10 text-muted border-muted/30',
     statusIcon: Clock,
+    statusColor: 'bg-nav-gold',
   },
 ]
 
 export default function Projects() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active')
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    const reveals = sectionRef.current?.querySelectorAll('.reveal')
+    reveals?.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="projects" className="py-24 sm:py-32 bg-soft-stone">
+    <section ref={sectionRef} id="projects" className="py-16 sm:py-20 bg-canvas">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-coral text-white text-xs font-medium rounded-pill mb-6 tracking-[0.28px] uppercase">
-            <Coffee size={14} />
+        {/* Section Label Bar */}
+        <div className="section-label px-4 py-3 flex items-center gap-2 mb-8 reveal">
+          <Coffee size={16} className="text-nintendo-red" />
+          <span className="text-xs font-bold text-ink uppercase tracking-wider">
             Projects
           </span>
-          <h2 className="font-display text-4xl sm:text-5xl font-normal leading-tight tracking-[-0.48px] text-ink mb-4">
-            Pengalaman Proyek
+          <ChevronRight size={12} className="text-muted-indigo ml-auto" />
+        </div>
+
+        {/* Header */}
+        <div className="text-center mb-12 reveal" style={{ animationDelay: '0.1s' }}>
+          <h2 className="display-text text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-4">
+            Project
+            <br />
+            <span className="text-nav-gold">Showcase</span>
           </h2>
-          <p className="text-muted max-w-lg mx-auto">
+          <p className="text-sm text-carbon max-w-lg mx-auto">
             Beberapa proyek yang pernah saya kerjakan selama perjalanan belajar.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => {
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => {
             const Icon = project.icon
             const StatusIcon = project.statusIcon
             return (
               <div
                 key={project.title}
-                className="group bg-canvas rounded-sm border border-hairline hover:border-muted transition-colors overflow-hidden"
+                className="bevel-plate rounded-md overflow-hidden reveal group"
+                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
-                {project.image ? (
-                  <img src={project.image} alt={project.title} className="h-40 w-full object-cover" />
-                ) : (
-                  <div className={`h-40 bg-linear-to-br ${project.thumbGradient} flex items-center justify-center`}>
-                    <Icon size={48} className="text-muted/40" />
-                  </div>
-                )}
-
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="p-2 border border-hairline rounded-xs text-muted">
-                      <Icon size={18} />
+                {/* Thumbnail - Carbon Frame */}
+                <div className="bg-carbon p-2">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-36 sm:h-40 w-full object-cover rounded-sm border border-chrome-indigo"
+                    />
+                  ) : (
+                    <div className="h-36 sm:h-40 bg-gradient-to-br from-chrome-indigo to-muted-indigo flex items-center justify-center rounded-sm border border-chrome-indigo">
+                      <Icon size={48} className="text-periwinkle/50" />
                     </div>
-                    <span className={`inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-pill border ${project.statusColor}`}>
-                      <StatusIcon size={12} />
-                      {project.status}
-                    </span>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-4">
+                  {/* Top row - Icon & Status */}
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="p-2 bg-platinum bevel-inset rounded-xs text-ink-soft">
+                      <Icon size={16} />
+                    </div>
+                    <div className={`flex items-center gap-1 px-2 py-0.5 ${project.statusColor} rounded-xs`}>
+                      <StatusIcon size={10} className="text-on-primary" />
+                      <span className="text-[10px] font-bold text-on-primary uppercase tracking-wider">
+                        {project.status}
+                      </span>
+                    </div>
                   </div>
 
-                  <h3 className="text-lg font-display font-medium text-ink mb-2">
+                  {/* Title */}
+                  <h3 className="text-base font-bold text-carbon mb-2 font-display uppercase tracking-wide">
                     {project.title}
                   </h3>
 
-                  <span className="inline-block px-3 py-1 text-xs text-muted border border-hairline rounded-xs">
+                  {/* Tech Badge */}
+                  <span className="inline-block px-2 py-0.5 bg-carbon text-on-primary text-[10px] font-bold uppercase tracking-wider rounded-xs">
                     {project.tech}
                   </span>
                 </div>
