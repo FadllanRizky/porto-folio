@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Coffee, ChevronRight, ChevronLeft, Terminal, Globe, Component, Layout, ShoppingCart, CheckCircle, Clock, X, Wallet } from 'lucide-react'
-
+import { Coffee, ChevronRight, ChevronLeft, Terminal, Globe, Component, Layout, ShoppingCart, CheckCircle, X, Wallet } from 'lucide-react'
 // Import asset gambar
 import flashscoreImg from '../assets/flashScore_Clone.png'
 import flashscoreImg2 from '../assets/flashScore_Clone2.png'
