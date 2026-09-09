@@ -15,9 +15,9 @@ const categories = [
     color: 'text-nintendo-red',
     bgColor: 'bg-nintendo-red',
     skills: [
-      { name: 'HTML', level: 90 },
-      { name: 'TypeScript', level: 75 },
-      { name: 'React', level: 80 },
+      { name: 'HTML', level: 99 },
+      { name: 'TypeScript', level: 85 },
+      { name: 'React', level: 99 },
     ],
   },
   {
@@ -26,13 +26,13 @@ const categories = [
     color: 'text-signal-orange',
     bgColor: 'bg-signal-orange',
     skills: [
-      { name: 'Java', level: 85 },
-      { name: 'Spring Boot', level: 70 },
-      { name: 'Node.js', level: 75 },
-      { name: 'PHP', level: 65 },
-      { name: 'Laravel', level: 60 },
-      { name: 'C', level: 50 },
-      { name: 'C++', level: 45 },
+      { name: 'Java', level: 90 },
+      { name: 'Spring Boot', level: 90 },
+      { name: 'Node.js', level: 99 },
+      { name: 'PHP', level: 70 },
+      { name: 'Laravel', level: 70 },
+      { name: 'C', level: 99 },
+      { name: 'C++', level: 70 },
     ],
   },
   {
@@ -41,21 +41,26 @@ const categories = [
     color: 'text-nav-gold',
     bgColor: 'bg-nav-gold',
     skills: [
-      { name: 'MySQL', level: 80 },
-      { name: 'PostgreSQL', level: 70 },
-      { name: 'MongoDB', level: 65 },
-      { name: 'Supabase', level: 60 },
+      { name: 'MySQL', level: 99 },
+      { name: 'PostgreSQL', level: 99 },
+      { name: 'MongoDB', level: 70 },
+      { name: 'Supabase', level: 85 },
     ],
   },
   {
-    label: 'Tools',
+    label: 'Tools & Productivity',
     icon: Wrench,
     color: 'text-amber',
-    bgColor: 'bg-amber',
+    bgColor: 'bg-amber', // Diperbaiki dari 'bg-g'
     skills: [
-      { name: 'XAMPP', level: 75 },
-      { name: 'Git', level: 70 },
+      { name: 'Docker', level: 85 },
+      { name: 'Nginx', level: 85 },
+      { name: 'ngrok', level: 85 },
+      { name: 'Git', level: 90 },
       { name: 'VS Code', level: 90 },
+      { name: 'XAMPP', level: 80 },
+      { name: 'Microsoft Word', level: 90 },
+      { name: 'Microsoft Excel', level: 85 },
     ],
   },
 ]
@@ -101,18 +106,18 @@ export default function Skills() {
             <span className="text-nav-gold">Stack</span>
           </h2>
           <p className="text-sm text-carbon max-w-lg mx-auto">
-            Berbagai teknologi yang saya kuasai dalam pengembangan aplikasi.
+            Berbagai teknologi dan alat yang saya kuasai dalam pengembangan aplikasi.
           </p>
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Categories Grid - Penyesuaian Alignment & Ukuran */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
           {categories.map((cat, catIndex) => {
             const Icon = cat.icon
             return (
               <div
                 key={cat.label}
-                className="bevel-plate rounded-md overflow-hidden reveal"
+                className="bevel-plate rounded-md overflow-hidden reveal h-full"
                 style={{ animationDelay: `${0.1 + catIndex * 0.1}s` }}
               >
                 {/* Category Header */}
@@ -123,20 +128,20 @@ export default function Skills() {
                   </span>
                 </div>
 
-                {/* Skills List */}
-                <div className="p-4 space-y-4">
+                {/* Skills List - Diperketat Spasingnya Agar Rapi */}
+                <div className="p-4 space-y-3">
                   {cat.skills.map((skill) => (
                     <div key={skill.name}>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm font-bold text-carbon">
+                        <span className="text-xs sm:text-sm font-bold text-carbon">
                           {skill.name}
                         </span>
                         <span className="text-xs text-ink-soft font-medium">
                           {skill.level}%
                         </span>
                       </div>
-                      {/* Progress Bar - Bevel Inset */}
-                      <div className="h-3 bg-platinum bevel-inset rounded-xs overflow-hidden">
+                      {/* Progress Bar */}
+                      <div className="h-2.5 bg-platinum bevel-inset rounded-xs overflow-hidden">
                         <div
                           className={`h-full ${cat.bgColor} rounded-xs transition-all duration-500`}
                           style={{ width: `${skill.level}%` }}
@@ -151,5 +156,4 @@ export default function Skills() {
         </div>
       </div>
     </section>
-  )
-}
+  )}
