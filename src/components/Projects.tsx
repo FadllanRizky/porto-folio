@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Coffee, ChevronRight, ChevronLeft, Terminal, Globe, Component, Layout, ShoppingCart, CheckCircle, X, Wallet } from 'lucide-react'
+import { Coffee, ChevronRight, ChevronLeft, Terminal, Globe, Component, Layout, ShoppingCart, CheckCircle, X, Wallet, Ticket, Clock } from 'lucide-react'
 // Import asset gambar
 import flashscoreImg from '../assets/flashScore_Clone.png'
 import flashscoreImg2 from '../assets/flashScore_Clone2.png'
@@ -33,6 +33,21 @@ import wallet2 from '../assets/wallet2.png'
 import wallet3 from '../assets/wallet3.png'
 import wallet4 from '../assets/wallet4.png'
 import wallet5 from '../assets/wallet5.png'
+
+import tiket from '../assets/tiket.png'
+import tiket2 from '../assets/tiket2.png'
+import tiket3 from '../assets/tiket3.png'
+import tiket4 from '../assets/tiket4.png'
+import tiket5 from '../assets/tiket5.png'
+import tiket6 from '../assets/tiket6.png'
+import tiket7 from '../assets/tiket7.png'
+import tiket8 from '../assets/tiket8.png'
+import tiket9 from '../assets/tiket9.png'
+import tiket10 from '../assets/tiket10.png'
+import tiket11 from '../assets/tiket11.png'
+import tiket12 from '../assets/tiket12.png'
+import tiket13 from '../assets/tiket13.png'
+import tiket14 from '../assets/tiket14.png'
 
 interface Project {
   title: string
@@ -112,6 +127,21 @@ const projects: Project[] = [
     status: 'Selesai',
     statusIcon: CheckCircle,
     statusColor: 'bg-nintendo-red',
+  },
+  {
+    title: 'Tiket App',
+    tech: 'React, Docker',
+    techStack: ['React', 'JavaScript', 'Tailwind CSS', 'Docker'],
+    description:
+      'Aplikasi pemesanan tiket yang masih dalam pengembangan, saat ini fungsionalitas sisi user yang sudah berjalan. Projek dijalankan lewat Docker, jadi Docker harus hidup untuk mengakses aplikasinya.',
+    icon: Ticket,
+    images: [
+      tiket, tiket2, tiket3, tiket4, tiket5, tiket6, tiket7,
+      tiket8, tiket9, tiket10, tiket11, tiket12, tiket13, tiket14,
+    ],
+    status: 'Dalam Proses',
+    statusIcon: Clock,
+    statusColor: 'bg-signal-orange',
   },
 ]
 
